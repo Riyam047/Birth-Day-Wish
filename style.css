@@ -974,15 +974,23 @@ body.page-gallery #bg {
 }
 body.page-gallery #bg::before {
   content: "";
-  position: absolute;
-  inset: -10%;
+  position: fixed;
+  inset: 0;
   z-index: -1;
-  background-image: url(gallery-bg.png);
-  background-size: cover;
-  background-position: center center;
-  filter: blur(25px) brightness(0.5);
-}
 
+  background-image: url("gallery-bg.png");
+  background-repeat: no-repeat;
+
+  /* SHOW THE ENTIRE IMAGE */
+  background-size: contain;
+  background-position: center center;
+
+  /* No blur */
+  filter: none;
+
+  /* Prevent any accidental scaling/cropping */
+  background-color: #111;
+}
 /* Fixes scaling on small mobile viewports (like 550x858 or smaller) */
 @media (max-width: 700px), (max-height: 860px) {
   body.page-gallery #bg {
