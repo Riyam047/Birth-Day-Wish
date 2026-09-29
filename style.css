@@ -79,10 +79,29 @@ body.page-poetry #bg {
   background-position: center 20%;
   animation: kb 30s ease-in-out infinite alternate;
 }
-body.page-gallery #bg {
+/* body.page-gallery #bg {
   background-image: linear-gradient(rgba(7, 9, 24, 0.55), rgba(7, 9, 24, 0.75)),
     url(gallery-bg.png);
   filter: blur(26px) saturate(1.1);
+} */
+
+body.page-gallery #bg::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  z-index: -1;
+  background-image: url(gallery-bg.png);
+  background-size: cover;
+  background-position: center;
+  filter: blur(0px) brightness(0.6);
+}
+
+@media (max-width: 700px) {
+  body.page-gallery #bg {
+    /* Fits the subject neatly on narrow phone screens without severe cropping */
+    background-size: 200px 200px, 260px 260px, 180px 180px, 300px 300px, contain;
+    background-position: center 25%;
+  }
 }
 body.page-poetry .aurora,
 body.page-gallery .aurora {
@@ -889,13 +908,13 @@ body.page-memories #bg {
   animation: kb 34s ease-in-out infinite alternate;
 }
 body.page-gallery #bg {
-    background-image: url(gallery-bg.png);
-    background-position: center 28%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: saturate(1.1) brightness(1.02); /* Crisp & vibrant without blur */
-    animation: kb 34s ease-in-out infinite alternate;
-  }
+  background-image: url(gallery-bg.png);
+  background-position: center 28%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: saturate(1.1) brightness(1.02); /* Crisp & vibrant without blur */
+  animation: kb 34s ease-in-out infinite alternate;
+}
 
 body.page-poetry .aurora,
 body.page-memories .aurora,
@@ -934,31 +953,123 @@ body.page-gallery section {
   }
 }
 body.page-gallery #bg {
-    /* Removed dark linear-gradient overlay to show original clear image */
-    background-image: 
-      radial-gradient(2px 2px at 20px 30px, rgba(255, 223, 138, 0.9), rgba(0,0,0,0)),
-      radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), rgba(0,0,0,0)),
-      radial-gradient(1.5px 1.5px at 90px 40px, rgba(255, 215, 0, 0.9), rgba(0,0,0,0)),
-      radial-gradient(2px 2px at 160px 120px, rgba(255, 255, 255, 0.9), rgba(0,0,0,0)),
-      url(gallery-bg.png);
-    
-    background-repeat: repeat, repeat, repeat, repeat, no-repeat;
-    background-size: 200px 200px, 260px 260px, 180px 180px, 300px 300px, cover;
-    background-position: center 28%;
-    
-    /* Filter updated: removed blur(1px) so the image stays sharp */
-    filter: saturate(1.08);
-    
-    /* Animation handles both the Ken Burns zoom and moving glowing particles */
-    animation: kb 34s ease-in-out infinite alternate, floatingParticles 18s linear infinite;
-  }
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
   
-  /* Keyframes for smooth glowing particle movement */
-  @keyframes floatingParticles {
-    0% {
-      background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, center 28%;
-    }
-    100% {
-      background-position: 200px -400px, -260px -300px, 180px -350px, -300px -500px, center 28%;
-    }
+  /* Core image centered cleanly */
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 223, 138, 0.9), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 90px 40px, rgba(255, 215, 0, 0.9), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, rgba(255, 255, 255, 0.9), rgba(0,0,0,0)),
+    url(gallery-bg.png);
+  
+  background-repeat: repeat, repeat, repeat, repeat, no-repeat;
+ background-size: 200px 200px, 260px 260px, 180px 180px, 300px 300px, contain;
+  background-position: center center;
+  filter: saturate(1.08);
+  animation: kb 34s ease-in-out infinite alternate, floatingParticles 18s linear infinite;
+}
+body.page-gallery #bg::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  z-index: -1;
+  background-image: url(gallery-bg.png);
+  background-size: cover;
+  background-position: center center;
+  filter: blur(25px) brightness(0.5);
+}
+
+/* Fixes scaling on small mobile viewports (like 550x858 or smaller) */
+@media (max-width: 700px), (max-height: 860px) {
+  body.page-gallery #bg {
+    /* Guarantees 100% full image visibility on narrow/compressed mobile displays */
+    background-size: 200px 200px, 260px 260px, 180px 180px, 300px 300px, contain;
+    background-position: center center;
   }
+}
+/* Keyframes for smooth glowing particle movement */
+@keyframes floatingParticles {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, center 28%;
+  }
+  100% {
+    background-position: 200px -400px, -260px -300px, 180px -350px, -300px -500px, center 28%;
+  }
+}
+
+
+/* Container for the video element and glowing ambient aura */
+.sketch-container {
+  position: relative;
+  width: 80%;
+  max-width: 280px;
+  margin: 0 auto 24px auto;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 2.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 2.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Reveal triggering class for container */
+.sketch-container.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Video styling */
+.reveal-sketch {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25), 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 223, 138, 0.3);
+}
+
+/* Glowing golden particle overlay */
+.sketch-container::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  pointer-events: none;
+  border-radius: 18px;
+  opacity: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 223, 138, 0.95), transparent),
+    radial-gradient(3px 3px at 70% 20%, rgba(255, 215, 0, 0.9), transparent),
+    radial-gradient(2px 2px at 40% 70%, rgba(255, 240, 180, 0.95), transparent),
+    radial-gradient(2.5px 2.5px at 85% 60%, rgba(255, 200, 80, 0.85), transparent),
+    radial-gradient(2px 2px at 15% 80%, rgba(255, 223, 138, 0.9), transparent);
+  background-size: 100% 100%;
+  transition: opacity 2.5s ease-in-out;
+}
+
+/* Activate golden particle animation when visible */
+.sketch-container.show::after {
+  opacity: 1;
+  animation: goldenParticleGlow 6s ease-in-out infinite alternate;
+}
+
+/* Keyframes for soft floating particle glow */
+@keyframes goldenParticleGlow {
+  0% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
+  }
+  50% {
+    transform: translateY(-6px) scale(1.02);
+    filter: drop-shadow(0 0 10px rgba(255, 223, 138, 0.8));
+  }
+  100% {
+    transform: translateY(-12px) scale(1.04);
+    filter: drop-shadow(0 0 16px rgba(255, 200, 80, 0.6));
+  }
+}

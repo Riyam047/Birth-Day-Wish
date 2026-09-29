@@ -1,6 +1,54 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/><title>One Last Thing</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/><link rel="stylesheet" href="style.css"/></head><body class="page-surprise"><main id="app">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Last Thing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-surprise">
+  <main id="app">
+    <section class="surprise">
+      <div class="wrap center">
+        <div class="eyebrow reveal">before you leave</div>
+        <h2 class="reveal">One Last Thing...</h2>
+        <p class="lead reveal">
+          Some gifts don't come wrapped. Some are simply a few words someone wanted you to have.
+        </p>
+        <button id="revealButton" class="reveal-btn reveal">
+          Open the last little note ✦
+        </button>
 
-<section class="surprise"><div class="wrap center"><div class="eyebrow reveal">before you leave</div><h2 class="reveal">One Last Thing…</h2><p class="lead reveal">Some gifts don't come wrapped. Some are simply a few words someone wanted you to have.</p><button id="revealButton" class="reveal-btn reveal">Open the last little note ✦</button>
-<div id="hiddenMessage" class="hidden-message"><div class="quote">“Wherever life takes you from here, I hope there are always enough little lights around you to make even ordinary days feel beautiful.<br/><br/>You are the moon in my quiet sky,<br/>The one I’ll admire from afar—<br/>And I’ll remain like that distant dream,<br/>A blur inside your mind,<br/>A nameless, hazy thought<br/>You’ll never find.”</div><div class="signature">Happy Birthday.</div></div></div></section>
-<footer><div class="footer-heart">🌙 ✦</div>Some stars are meant to be admired from afar.</footer>
-</main><script src="script.js"></script></body></html>
+        <div id="hiddenMessage" class="hidden-message">
+            <div id="sketchWrapper" class="sketch-container">
+                <video
+                    id="wishVideo"
+                    class="reveal-sketch"
+                    playsinline
+                    preload="auto"
+                    muted
+                >
+                    <source src="wish.mp4" type="video/mp4" />
+                    Your browser does not support video playback.
+                </video>
+            </div>
+
+          <div class="quote">
+            “Wherever life takes you from here, I hope there are always enough
+            little lights around you to make even ordinary days feel
+            beautiful.<br />
+          </div>
+          <div class="signature">Wish u  Happiest Birthday again...ms.Thermodynamicsee.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-heart">🌙 ✦</div>
+     
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
