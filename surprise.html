@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>One Last Thing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="page-surprise">
-    <div id="fireflies"></div>
-    <nav class="nav">
-      <a class="brand" href="index.html">Happy Birthday</a>
-      <div class="links">
-        <a href="index.html">Home</a><a href="wishes.html">Wishes</a
-        ><a href="poetry.html">Poetry</a><a href="memories.html">Memories</a
-        ><a href="gallery.html">Gallery</a><a href="surprise.html">Surprise</a>
-      </div>
-    </nav>
-    <button
-      id="musicButton"
-      class="music-control"
-      aria-label="Toggle birthday music"
-    >
-      ♪
-    </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Last Thing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-surprise">
+  <main id="app">
     <section class="surprise">
       <div class="wrap center">
         <div class="eyebrow reveal">before you leave</div>
-        <h2 class="reveal">One Last Thing…</h2>
+        <h2 class="reveal">One Last Thing...</h2>
         <p class="lead reveal">
-          Some gifts don't come wrapped. Some are simply a few words someone
-          wanted you to have.
+          Some gifts don't come wrapped. Some are simply a few words someone wanted you to have.
         </p>
         <button id="revealButton" class="reveal-btn reveal">
           Open the last little note ✦
         </button>
+
         <div id="hiddenMessage" class="hidden-message">
-          <div id="sketchWrapper" class="sketch-container">
-            <video
-              id="wishVideo"
-              class="reveal-sketch"
-              playsinline
-              webkit-playsinline
-              preload="auto"
-            >
-              <source src="wish.mp4" type="video/mp4" />
-              Your browser does not support video playback.
-            </video>
-          </div>
+            <div id="sketchWrapper" class="sketch-container">
+                <video
+                    id="wishVideo"
+                    class="reveal-sketch"
+                    playsinline
+                    preload="auto"
+                    muted
+                >
+                    <source src="wish.mp4" type="video/mp4" />
+                    Your browser does not support video playback.
+                </video>
+            </div>
+
           <div class="quote">
             “Wherever life takes you from here, I hope there are always enough
-            little lights around you to make even ordinary days feel beautiful.<br/>
-           
+            little lights around you to make even ordinary days feel
+            beautiful.<br />
           </div>
-          <div class="signature">Happy Birthday miss Thermodynamicsee</div>
+          <div class="signature">Wish u  Happiest Birthday again...ms.Thermodynamicsee.</div>
         </div>
       </div>
     </section>
+
     <footer>
       <div class="footer-heart">🌙 ✦</div>
-      Some stars are meant to be admired from afar.
+     
     </footer>
-    <script src="script.js"></script>
-  </body>
+  </main>
+
+  <script src="script.js"></script>
+</body>
 </html>
